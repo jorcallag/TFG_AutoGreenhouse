@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseService">
+    <EntitySetMapping Name="actuator">
+      <EntityTypeMapping TypeName="DatabaseModel.actuator">
+        <MappingFragment StoreEntitySet="actuator">
+          <ScalarProperty Name="id_actuator" ColumnName="id_actuator" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_device_associated" ColumnName="id_device_associated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="actuator_value">
+      <EntityTypeMapping TypeName="DatabaseModel.actuator_value">
+        <MappingFragment StoreEntitySet="actuator_value">
+          <ScalarProperty Name="id_actuator_value" ColumnName="id_actuator_value" />
+          <ScalarProperty Name="execution" ColumnName="execution" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="id_actuator_associated" ColumnName="id_actuator_associated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="device">
+      <EntityTypeMapping TypeName="DatabaseModel.device">
+        <MappingFragment StoreEntitySet="device">
+          <ScalarProperty Name="id_device" ColumnName="id_device" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="time_connect" ColumnName="time_connect" />
+          <ScalarProperty Name="id_plant_associated" ColumnName="id_plant_associated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plant">
+      <EntityTypeMapping TypeName="DatabaseModel.plant">
+        <MappingFragment StoreEntitySet="plant">
+          <ScalarProperty Name="id_plant" ColumnName="id_plant" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="air_temperature" ColumnName="air_temperature" />
+          <ScalarProperty Name="air_humidity" ColumnName="air_humidity" />
+          <ScalarProperty Name="ground_humidity" ColumnName="ground_humidity" />
+          <ScalarProperty Name="quantity_fertilizer_week" ColumnName="quantity_fertilizer_week" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sensor">
+      <EntityTypeMapping TypeName="DatabaseModel.sensor">
+        <MappingFragment StoreEntitySet="sensor">
+          <ScalarProperty Name="id_sensor" ColumnName="id_sensor" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_device_associated" ColumnName="id_device_associated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sensor_value">
+      <EntityTypeMapping TypeName="DatabaseModel.sensor_value">
+        <MappingFragment StoreEntitySet="sensor_value">
+          <ScalarProperty Name="id_sensor_value" ColumnName="id_sensor_value" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="id_sensor_associated" ColumnName="id_sensor_associated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <DbDacFx path="C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\TFG_WebService\TFG_WebAPI\obj\Release\AutoScripts\TFG_DatabaseConnection_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+  <DbDacFx path="C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\TFG_WebService\TFG_WebAPI\obj\Release\AutoScripts\DatabaseConnection_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+  <DbDacFx path="C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\TFG_WebService\TFG_WebAPI\obj\Release\AutoScripts\DatabaseService_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+  <DbDacFx path="C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\TFG_WebService\TFG_WebAPI\obj\Release\AutoScripts\DBConnection_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+  <IisApp path="C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\TFG_WebService\TFG_WebAPI\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\TFG_WebService\TFG_WebAPI\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\TFG_WebService\TFG_WebAPI\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

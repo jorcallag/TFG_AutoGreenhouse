@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="actuator">
+    <Key>
+      <PropertyRef Name="id_actuator" />
+    </Key>
+    <Property Name="id_actuator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar(max)" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="id_device_associated" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="actuator_value">
+    <Key>
+      <PropertyRef Name="id_actuator_value" />
+    </Key>
+    <Property Name="id_actuator_value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="execution" Type="tinyint" Nullable="false" />
+    <Property Name="timestamp" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="id_actuator_associated" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="device">
+    <Key>
+      <PropertyRef Name="id_device" />
+    </Key>
+    <Property Name="id_device" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ip" Type="varchar(max)" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" />
+    <Property Name="time_connect" Type="datetime2" Precision="7" />
+    <Property Name="id_plant_associated" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="plant">
+    <Key>
+      <PropertyRef Name="id_plant" />
+    </Key>
+    <Property Name="id_plant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="air_temperature" Type="float" Nullable="false" />
+    <Property Name="air_humidity" Type="float" Nullable="false" />
+    <Property Name="ground_humidity" Type="float" Nullable="false" />
+    <Property Name="quantity_fertilizer_week" Type="float" />
+  </EntityType>
+  <EntityType Name="sensor">
+    <Key>
+      <PropertyRef Name="id_sensor" />
+    </Key>
+    <Property Name="id_sensor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar(max)" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="id_device_associated" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sensor_value">
+    <Key>
+      <PropertyRef Name="id_sensor_value" />
+    </Key>
+    <Property Name="id_sensor_value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="value" Type="float" Nullable="false" />
+    <Property Name="timestamp" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="id_sensor_associated" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_actuator_device">
+    <End Role="device" Type="Self.device" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="actuator" Type="Self.actuator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="device">
+        <PropertyRef Name="id_device" />
+      </Principal>
+      <Dependent Role="actuator">
+        <PropertyRef Name="id_device_associated" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_actuator_value_actuator">
+    <End Role="actuator" Type="Self.actuator" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="actuator_value" Type="Self.actuator_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="actuator">
+        <PropertyRef Name="id_actuator" />
+      </Principal>
+      <Dependent Role="actuator_value">
+        <PropertyRef Name="id_actuator_associated" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_device_plant">
+    <End Role="plant" Type="Self.plant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="device" Type="Self.device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plant">
+        <PropertyRef Name="id_plant" />
+      </Principal>
+      <Dependent Role="device">
+        <PropertyRef Name="id_plant_associated" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sensor_device">
+    <End Role="device" Type="Self.device" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sensor" Type="Self.sensor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="device">
+        <PropertyRef Name="id_device" />
+      </Principal>
+      <Dependent Role="sensor">
+        <PropertyRef Name="id_device_associated" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sensor_value_sensor">
+    <End Role="sensor" Type="Self.sensor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sensor_value" Type="Self.sensor_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sensor">
+        <PropertyRef Name="id_sensor" />
+      </Principal>
+      <Dependent Role="sensor_value">
+        <PropertyRef Name="id_sensor_associated" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="actuator" EntityType="Self.actuator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="actuator_value" EntityType="Self.actuator_value" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="device" EntityType="Self.device" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plant" EntityType="Self.plant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sensor" EntityType="Self.sensor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sensor_value" EntityType="Self.sensor_value" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_actuator_device" Association="Self.FK_actuator_device">
+      <End Role="device" EntitySet="device" />
+      <End Role="actuator" EntitySet="actuator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_actuator_value_actuator" Association="Self.FK_actuator_value_actuator">
+      <End Role="actuator" EntitySet="actuator" />
+      <End Role="actuator_value" EntitySet="actuator_value" />
+    </AssociationSet>
+    <AssociationSet Name="FK_device_plant" Association="Self.FK_device_plant">
+      <End Role="plant" EntitySet="plant" />
+      <End Role="device" EntitySet="device" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sensor_device" Association="Self.FK_sensor_device">
+      <End Role="device" EntitySet="device" />
+      <End Role="sensor" EntitySet="sensor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sensor_value_sensor" Association="Self.FK_sensor_value_sensor">
+      <End Role="sensor" EntitySet="sensor" />
+      <End Role="sensor_value" EntitySet="sensor_value" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
