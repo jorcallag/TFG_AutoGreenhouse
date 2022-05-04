@@ -85,7 +85,7 @@
         android:layout_height="19dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
-        android:text="ªC"
+        android:text="ºC"
         app:layout_constraintStart_toEndOf="@+id/air_temperature"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
