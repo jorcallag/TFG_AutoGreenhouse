@@ -10,7 +10,7 @@ namespace TFG_WebAPI.Controllers
 {
     public class PlantController : ApiController
     {
-        autogreenhousedbEntities DB = new autogreenhousedbEntities();
+        autogreenhousedbEntities1 DB = new autogreenhousedbEntities1();
 
         [HttpGet]
         [Route("api/Get/Plant/Id/{id}")]

@@ -20,7 +20,7 @@
             <PropertyRef Name="id_actuator_value" />
           </Key>
           <Property Name="id_actuator_value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="execution" Type="tinyint" Nullable="false" />
+          <Property Name="execution" Type="int" Nullable="false" />
           <Property Name="timestamp" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="id_actuator_associated" Type="int" Nullable="false" />
         </EntityType>
@@ -185,7 +185,7 @@
             <PropertyRef Name="id_actuator_value" />
           </Key>
           <Property Name="id_actuator_value" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="execution" Type="Byte" Nullable="false" />
+          <Property Name="execution" Type="Int32" Nullable="false" />
           <Property Name="timestamp" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="id_actuator_associated" Type="Int32" Nullable="false" />
           <NavigationProperty Name="actuator" Relationship="Self.FK_actuator_value_actuator" FromRole="actuator_value" ToRole="actuator" />
@@ -308,7 +308,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="autogreenhousedbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="autogreenhousedbEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="actuator" EntityType="Self.actuator" />
           <EntitySet Name="actuator_value" EntityType="Self.actuator_value" />
           <EntitySet Name="device" EntityType="Self.device" />
@@ -341,7 +341,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="autogreenhousedbModelStoreContainer" CdmEntityContainer="autogreenhousedbEntities">
+        <EntityContainerMapping StorageEntityContainer="autogreenhousedbModelStoreContainer" CdmEntityContainer="autogreenhousedbEntities1">
           <EntitySetMapping Name="actuator">
             <EntityTypeMapping TypeName="autogreenhousedbModel.actuator">
               <MappingFragment StoreEntitySet="actuator">

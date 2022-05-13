@@ -13,10 +13,10 @@ namespace TFG_WebAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class autogreenhousedbEntities : DbContext
+    public partial class autogreenhousedbEntities1 : DbContext
     {
-        public autogreenhousedbEntities()
-            : base("name=autogreenhousedbEntities")
+        public autogreenhousedbEntities1()
+            : base("name=autogreenhousedbEntities1")
         {
         }
     

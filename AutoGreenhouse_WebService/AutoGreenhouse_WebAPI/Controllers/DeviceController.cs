@@ -10,7 +10,7 @@ namespace TFG_WebAPI.Controllers
 {
     public class DeviceController : ApiController
     {
-        autogreenhousedbEntities DB = new autogreenhousedbEntities();
+        autogreenhousedbEntities1 DB = new autogreenhousedbEntities1();
 
         [HttpGet]
         // GET api/Get/Devices/

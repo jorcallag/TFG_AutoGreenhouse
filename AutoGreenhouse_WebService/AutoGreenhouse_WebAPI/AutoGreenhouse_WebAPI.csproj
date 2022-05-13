@@ -181,37 +181,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\actuator.cs">
-      <DependentUpon>AutoGreenhouse_Database.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\actuator_value.cs">
-      <DependentUpon>AutoGreenhouse_Database.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AutoGreenhouse_Database.Context.cs">
+    <Compile Include="Models\AutoGreenhouse_Models.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AutoGreenhouse_Database.Context.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AutoGreenhouse_Database.cs">
+    <Compile Include="Models\AutoGreenhouse_Models.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AutoGreenhouse_Database.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AutoGreenhouse_Database.Designer.cs">
+    <Compile Include="Models\AutoGreenhouse_Models.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AutoGreenhouse_Database.edmx</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\device.cs">
-      <DependentUpon>AutoGreenhouse_Database.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\plant.cs">
-      <DependentUpon>AutoGreenhouse_Database.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sensor.cs">
-      <DependentUpon>AutoGreenhouse_Database.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sensor_value.cs">
-      <DependentUpon>AutoGreenhouse_Database.tt</DependentUpon>
+      <DependentUpon>AutoGreenhouse_Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -224,15 +224,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\AutoGreenhouse_Database.Context.tt">
+    <Content Include="Models\AutoGreenhouse_Models.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AutoGreenhouse_Database.edmx</DependentUpon>
-      <LastGenOutput>AutoGreenhouse_Database.Context.cs</LastGenOutput>
+      <DependentUpon>AutoGreenhouse_Models.edmx</DependentUpon>
+      <LastGenOutput>AutoGreenhouse_Models.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AutoGreenhouse_Database.tt">
+    <Content Include="Models\AutoGreenhouse_Models.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AutoGreenhouse_Database.edmx</DependentUpon>
-      <LastGenOutput>AutoGreenhouse_Database.cs</LastGenOutput>
+      <DependentUpon>AutoGreenhouse_Models.edmx</DependentUpon>
+      <LastGenOutput>AutoGreenhouse_Models.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -255,12 +255,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\AutoGreenhouse_Database.edmx">
+    <EntityDeploy Include="Models\AutoGreenhouse_Models.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AutoGreenhouse_Database.Designer.cs</LastGenOutput>
+      <LastGenOutput>AutoGreenhouse_Models.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AutoGreenhouse_Database.edmx.diagram">
-      <DependentUpon>AutoGreenhouse_Database.edmx</DependentUpon>
+    <Content Include="Models\AutoGreenhouse_Models.edmx.diagram">
+      <DependentUpon>AutoGreenhouse_Models.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\AutoGreenhouse - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

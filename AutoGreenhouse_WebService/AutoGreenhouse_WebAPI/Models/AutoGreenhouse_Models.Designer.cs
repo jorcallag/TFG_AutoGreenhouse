@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Jorlu\Google Drive\Universidad\4º-Cuarto\TFG\Desarrollo\Server\AutoGreenhouse_WebService\AutoGreenhouse_WebAPI\Models\AutoGreenhouse_Database.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Jorlu\Desktop\TFG_AutoGreenhouse\AutoGreenhouse_WebService\AutoGreenhouse_WebAPI\Models\AutoGreenhouse_Models.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

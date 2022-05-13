@@ -15,7 +15,7 @@ namespace TFG_WebAPI.Models
     public partial class actuator_value
     {
         public int id_actuator_value { get; set; }
-        public byte execution { get; set; }
+        public int execution { get; set; }
         public System.DateTime timestamp { get; set; }
         public int id_actuator_associated { get; set; }
     
