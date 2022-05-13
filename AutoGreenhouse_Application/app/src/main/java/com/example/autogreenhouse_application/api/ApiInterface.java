@@ -43,27 +43,27 @@ public interface ApiInterface {
     public void getHumidifLevel(Callback<Sensor_Value> callback);
 
     //Info actuador leds
-    @GET("/api/Get/SensorValue/BySensor/Id/1")
+    @GET("/api/Get/ActuatorValue/ByActuator/Id/1")
     public void getLeds(Callback<Actuator_Value> callback);
 
     //Info actuador electrovalvula
-    @GET("/api/Get/SensorValue/BySensor/Id/2")
+    @GET("/api/Get/ActuatorValue/ByActuator/Id/2")
     public void getValve(Callback<Actuator_Value> callback);
 
     //Info actuador bomba
-    @GET("/api/Get/SensorValue/BySensor/Id/3")
+    @GET("/api/Get/ActuatorValue/ByActuator/Id/3")
     public void getPump(Callback<Actuator_Value> callback);
 
     //Info actuador extractor
-    @GET("/api/Get/SensorValue/BySensor/Id/4")
+    @GET("/api/Get/ActuatorValue/ByActuator/Id/4")
     public void getExtractor(Callback<Actuator_Value> callback);
 
     //Info actuador calefactor
-    @GET("/api/Get/SensorValue/BySensor/Id/5")
+    @GET("/api/Get/ActuatorValue/ByActuator/Id/5")
     public void getHeating(Callback<Actuator_Value> callback);
 
     //Info actuador humidificador
-    @GET("/api/Get/SensorValue/BySensor/Id/6")
+    @GET("/api/Get/ActuatorValue/ByActuator/Id/6")
     public void getHumidif(Callback<Actuator_Value> callback);
 
     //Info dispositivo

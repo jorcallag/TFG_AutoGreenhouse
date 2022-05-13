@@ -9,7 +9,7 @@ public class Actuator_Value {
     @SerializedName("id_actuator_value")
     private int id_actuator_value;
     @SerializedName("execution")
-    private int value;
+    private int execution;
     @SerializedName("timestamp")
     private String timestamp;
     @SerializedName("id_actuator_associated")
@@ -19,9 +19,9 @@ public class Actuator_Value {
 
     }
 
-    public Actuator_Value(int id_actuator_value, int value, String timestamp, int id_actuator_associated){
+    public Actuator_Value(int id_actuator_value, int execution, String timestamp, int id_actuator_associated){
         setId_actuator_value(id_actuator_value);
-        setValue(value);
+        setExecution(execution);
         setTimestamp(timestamp);
         setId_actuator_associated(id_actuator_associated);
     }
@@ -34,12 +34,12 @@ public class Actuator_Value {
         this.id_actuator_value = id_actuator_value;
     }
 
-    public int getValue() {
-        return value;
+    public int getExecution() {
+        return execution;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setExecution(int execution) {
+        this.execution = execution;
     }
 
     public String getTimestamp() {

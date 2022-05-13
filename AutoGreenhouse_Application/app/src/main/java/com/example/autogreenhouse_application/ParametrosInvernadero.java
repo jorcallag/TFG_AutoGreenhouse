@@ -253,7 +253,7 @@ public class ParametrosInvernadero extends AppCompatActivity {
             public void success(Actuator_Value ledsResponses, Response response) {
                 progressDialog.dismiss();
                 ledsResponseData = ledsResponses;
-                if(ledsResponseData.getValue() == 0){
+                if(ledsResponseData.getExecution() == 0){
                     leds.append("Off");
                 }else{
                     leds.append("On");
@@ -279,7 +279,7 @@ public class ParametrosInvernadero extends AppCompatActivity {
             public void success(Actuator_Value valveResponses, Response response) {
                 progressDialog.dismiss();
                 valveResponseData = valveResponses;
-                if(valveResponseData.getValue() == 0){
+                if(valveResponseData.getExecution() == 0){
                     valve.append("Off");
                 }else{
                     valve.append("On");
@@ -305,7 +305,7 @@ public class ParametrosInvernadero extends AppCompatActivity {
             public void success(Actuator_Value pumpResponses, Response response) {
                 progressDialog.dismiss();
                 pumpResponseData = pumpResponses;
-                if(pumpResponseData.getValue() == 0){
+                if(pumpResponseData.getExecution() == 0){
                     pump.append("Off");
                 }else{
                     pump.append("On");
@@ -331,7 +331,7 @@ public class ParametrosInvernadero extends AppCompatActivity {
             public void success(Actuator_Value extractorResponses, Response response) {
                 progressDialog.dismiss();
                 extractorResponseData = extractorResponses;
-                if(extractorResponseData.getValue() == 0){
+                if(extractorResponseData.getExecution() == 0){
                     extractor.append("Off");
                 }else{
                     extractor.append("On");
@@ -357,7 +357,7 @@ public class ParametrosInvernadero extends AppCompatActivity {
             public void success(Actuator_Value heatingResponses, Response response) {
                 progressDialog.dismiss();
                 heatingResponseData = heatingResponses;
-                if(heatingResponseData.getValue() == 0){
+                if(heatingResponseData.getExecution() == 0){
                     heating.append("Off");
                 }else{
                     heating.append("On");
@@ -383,7 +383,7 @@ public class ParametrosInvernadero extends AppCompatActivity {
             public void success(Actuator_Value humidifResponses, Response response) {
                 progressDialog.dismiss();
                 humidifResponseData = humidifResponses;
-                if(humidifResponseData.getValue() == 0){
+                if(humidifResponseData.getExecution() == 0){
                     humidif.append("Off");
                 }else{
                     humidif.append("On");
