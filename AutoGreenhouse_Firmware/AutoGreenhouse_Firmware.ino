@@ -362,8 +362,7 @@ void postSensorValue(float sample, int idSensor){
     }
         
     http.end();
-  }
-  delay(30 * 60 * 1000);  
+  } 
 }
 
 void postActuatorValue(int execution, int idActuator){
@@ -387,5 +386,4 @@ void postActuatorValue(int execution, int idActuator){
          
     http.end();
   }
-  delay(30 * 60 * 1000);
 }
