@@ -127,7 +127,7 @@ void setup() {
   xTaskCreate(liquidSensorRead, "liquidSensorRead", 1024, NULL, 2, NULL);
   xTaskCreate(groundHumidSensorRead, "groundHumidSensorRead", 1024, NULL, 2, NULL);
   xTaskCreate(ldrSensorRead, "ldrSensorRead", 1024, NULL, 2, NULL);
-  xTaskCreate(dhtSensorRead, "dhtSensorRead", 1024, NULL, 2, NULL);
+  xTaskCreate(dhtSensorRead, "dhtSensorRead", 2048, NULL, 2, NULL);
   xTaskCreate(getPlanta, "getPlanta", 1024, NULL, 1, NULL);
 }
 
@@ -138,12 +138,18 @@ void loop() {
 void warningSystem(void *pvParameters){
   for(;;){
     if(fertilizerTankSample == 0){
-      ledcWriteTone(channel0, 500);
+      ledcWriteTone(channel0, 255);
+      vTaskDelay(2000); 
+      ledcWriteTone(channel0, 0);      
+      vTaskDelay(2000);
     }else{
       ledcWriteTone(channel0, 0);
     }
     if(humidTankSample == 0){
-      ledcWriteTone(channel0, 500);
+      ledcWriteTone(channel0, 255);
+      vTaskDelay(2000);
+      ledcWriteTone(channel0, 0);      
+      vTaskDelay(2000);
     }else{
       ledcWriteTone(channel0, 0);
     }
@@ -154,13 +160,10 @@ void fertilizerIrrigationSystem(void *pvParameters){
   for(;;){
     digitalWrite(pinPumpActuator, LOW);
     postActuatorValue(1, idPumpActuator);
-    // La bomba tiene un caudal de 350L/h
-    // Dejamos la bomba en funcionamiento el tiempo necesario para que riege los litros que necesite la planta
-    delay(((fertilizerWeekNecessary*3600)/350)*1000);
+    vTaskDelay(((fertilizerWeekNecessary*3600)/350)*1000);
     digitalWrite(pinPumpActuator, HIGH);
-    postActuatorValue(0, idPumpActuator); 
-    // Espera de una semana entre riego y riego de fertilizante
-    delay(7 * 24 * 60 * 60 * 1000);
+    postActuatorValue(0, idPumpActuator);
+    vTaskDelay(7 * 24 * 60 * 60 * 1000);
   }
 }
 
@@ -175,7 +178,6 @@ void lightControlSystem(void *pvParameters){
 void humidityControlSystem(void *pvParameters){
   for(;;){
     if(airHumidSample < airHumidNecessary){
-      Serial.println("Sistema de humidificacion activo");
       digitalWrite(pinHumidActuator, LOW);
       postActuatorValue(1, idHumidActuator);
     }else{
@@ -188,17 +190,13 @@ void humidityControlSystem(void *pvParameters){
 void temperatureControlSystem(void *pvParameters){
   for(;;){
     if(airTempSample < airTempNecessary){
-      Serial.println("Sistema de calefaccion activo");
       digitalWrite(pinHeatingActuator, LOW);
       postActuatorValue(1, idHeatingActuator);
-  
       ledcWrite(channel1, 0);
       postActuatorValue(0, idExtractActuator);
     }else if(airTempSample > airTempNecessary){
-      Serial.println("Sistema de refrigeracion activo");
       ledcWrite(channel1, (airTempSample-airTempNecessary)*25);
       postActuatorValue(1, idExtractActuator);
-      
       digitalWrite(pinHeatingActuator, HIGH);
       postActuatorValue(0, idHeatingActuator);
     }
@@ -208,7 +206,6 @@ void temperatureControlSystem(void *pvParameters){
 void irrigationSystem(void *pvParameters){
   for(;;){
     if(groundHumidSample < groundHumidNecessary){
-      Serial.println("Sistema de riego activo");
       digitalWrite(pinValveActuator, LOW);
       postActuatorValue(1, idValveActuator);
     }else{
@@ -221,76 +218,48 @@ void irrigationSystem(void *pvParameters){
 void liquidSensorRead(void *pvParameters){
   for(;;){
     if(digitalRead(pinFertilizerLiquidSensor) != 0){
-      // Hay liquido en el tanque
       fertilizerTankSample = 100;
       postSensorValue(fertilizerTankSample, idFertilizerLiquidSensor);
-      //Serial.println("Hay liquido en el tanque de fertilizante");
     }else{
-      //No hay liquido en el tanque
       fertilizerTankSample = 0;
       postSensorValue(fertilizerTankSample, idFertilizerLiquidSensor);
-      //Serial.println("No hay liquido en el tanque de fertilizante");
     }
+    
     if(digitalRead(pinHumidLiquidSensor) != 0){
-      // Hay liquido en el tanque
       humidTankSample = 100;
       postSensorValue(humidTankSample, idHumidLiquidSensor);
-      //Serial.println("Hay liquido en el tanque del humidificador");
     }else{
-      // No hay liquido en el tanque
       humidTankSample = 0;
       postSensorValue(humidTankSample, idHumidLiquidSensor);
-      Serial.println("No hay liquido en el tanque del humidificador");
     }
-    delay(30 * 60 * 1000);
+    vTaskDelay(30 * 60 * 1000);
   }
 }
 
 void groundHumidSensorRead(void *pvParameters){
   for(;;){
-    //Lectura de nivel de humdad de la tierra del sensor de humedad relativa (POST al servidor)
     groundHumidSample = (100-((100*analogRead(pinGroundHumidSensor))/4095));
     postSensorValue(groundHumidSample, idGroundHumidSensor);
-    
-    //Serial.print("Humedad de la tierra: ");
-    //Serial.print(groundHumidSample);
-    //Serial.println("%");
-    
-    delay(30 * 60 * 1000);
+    vTaskDelay(30 * 60 * 1000);
   }
 }
 
 void ldrSensorRead(void *pvParameters){
   for(;;){
-    //Lectura de nivel de luz del sensor LDR (POST al servidor)
     lightSample = (100*analogRead(pinLdrSensor))/4095;
     postSensorValue(lightSample, idLightSensor);
-    
-    //Serial.print("Luminosidad: ");
-    //Serial.print(lightSample);
-    //Serial.println("%");
-    
-    delay(30 * 60 * 1000);
+    vTaskDelay(30 * 60 * 1000);
   }
 }
 
 void dhtSensorRead(void *pvParameters){
   for(;;){
-    //Lectura de humedad del sensor DHT11 (POST al servidor)
     airHumidSample = dht.readHumidity();
     postSensorValue(airHumidSample, idAirHumidSensor);
-  
-    //Lectura de temperatura del sensor DHT11 (POST al servidor)
+    vTaskDelay(10);
     airTempSample = dht.readTemperature();
     postSensorValue(airTempSample, idAirTempSensor);
-  
-    //Serial.print("Humedad del aire: ");
-    //Serial.print(airHumidSample);
-    //Serial.print("% Temperatura del aire: ");
-    //Serial.print(airTempSample);
-    //Serial.println("°C ");
-    
-    delay(30 * 60 * 1000);
+    vTaskDelay(30 * 60 * 1000);
   }
 }
 
@@ -327,18 +296,10 @@ void getPlanta(void *pvParameters){
       airHumidNecessary = myObject[keys[6]];
       groundHumidNecessary = myObject[keys[7]];
       fertilizerWeekNecessary = myObject[keys[8]];
-  
-      
-      //Serial.println("Los parametros de la planta son: ");
-      //Serial.println("Temperatura del aire necesaria: " + String(airTempNecessary));
-      //Serial.println("Humedad del aire necesaria: " + String(airHumidNecessary));
-      //Serial.println("Humedad de la tierra necesaria: " + String(groundHumidNecessary));
-      //Serial.println("Cantidad de fertilizante necesaria: " + String(fertilizerWeekNecessary));
-  
       http.end();
   
     }
-    delay(30 * 60 * 1000);
+    vTaskDelay(30 * 60 * 1000);
   }
 }
 
